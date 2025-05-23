@@ -88,11 +88,11 @@ const Pricing = () => {
             <Badge variant="secondary" className="mb-6 glass-effect">
               💎 Choose Your Plan
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight px-4">
               Choose the Plan That's
-              <span className="text-gradient block">Right for You</span>
+              <span className="text-gradient block mt-2">Right for You</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto px-4">
               Start your fitness journey with our flexible pricing options. Upgrade or downgrade anytime.
             </p>
           </div>
