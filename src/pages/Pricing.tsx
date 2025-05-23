@@ -172,7 +172,7 @@ const Pricing = () => {
       <section className="py-20 lg:py-32 bg-slate-900/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
               <span className="text-gradient">Feature Comparison</span>
             </h2>
             <p className="text-xl text-muted-foreground">
@@ -213,18 +213,18 @@ const Pricing = () => {
       <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Card className="glass-effect border-white/10 gradient-bg">
-            <CardContent className="p-12 text-center">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+            <CardContent className="p-8 sm:p-12 text-center">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
                 Ready to Start Your Journey?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Join thousands of users who have transformed their lives with FitGenie. Start free, upgrade when you're ready.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold w-full sm:w-auto">
                   Sign Up for Free
                 </Button>
-                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg">
+                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg w-full sm:w-auto">
                   Upgrade to Premium
                 </Button>
               </div>
