@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -66,6 +67,13 @@ const Index = () => {
     }
   ];
 
+  const scrollToDemo = () => {
+    const demoSection = document.getElementById('demo-section');
+    if (demoSection) {
+      demoSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -104,10 +112,17 @@ const Index = () => {
               Customized workouts, real-time tracking, and voice-guided sessions tailored just for you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 px-8 py-4 text-lg">
-                Get Started for Free
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg">
+              <Link to="/pricing">
+                <Button size="lg" className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 px-8 py-4 text-lg w-full sm:w-auto">
+                  Get Started for Free
+                </Button>
+              </Link>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg w-full sm:w-auto"
+                onClick={scrollToDemo}
+              >
                 Watch Demo
               </Button>
             </div>
@@ -159,11 +174,53 @@ const Index = () => {
               </Card>
             ))}
           </div>
+          
+          <div className="text-center mt-12">
+            <Link to="/features">
+              <Button size="lg" className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600">
+                Learn More About Features
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Section */}
+      <section id="demo-section" className="py-20 lg:py-32 bg-slate-900/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              See <span className="text-gradient">FitGenie</span> in Action
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Watch how our AI-powered features work together to create the ultimate fitness experience.
+            </p>
+            <Card className="glass-effect border-white/10 max-w-4xl mx-auto">
+              <CardContent className="p-8">
+                <div className="aspect-video bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-lg flex items-center justify-center mb-6 cursor-pointer hover:from-purple-500/30 hover:to-blue-500/30 transition-all duration-300">
+                  <div className="text-6xl opacity-75 hover:opacity-100 transition-opacity">▶️</div>
+                </div>
+                <p className="text-muted-foreground mb-6">
+                  Interactive demo showcasing voice commands, AI workout generation, and real-time progress tracking.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button size="lg" className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600">
+                    Play Demo Video
+                  </Button>
+                  <Link to="/features">
+                    <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                      Explore All Features
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 lg:py-32 bg-slate-900/50">
+      <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
@@ -189,6 +246,14 @@ const Index = () => {
               </Card>
             ))}
           </div>
+          
+          <div className="text-center mt-12">
+            <Link to="/blog">
+              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                Read More Success Stories
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -203,9 +268,18 @@ const Index = () => {
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
                 Join thousands of users who have transformed their lives with FitGenie's AI-powered coaching.
               </p>
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold">
-                Join FitGenie Now
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/pricing">
+                  <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold w-full sm:w-auto">
+                    Join FitGenie Now
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg w-full sm:w-auto">
+                    Contact Us
+                  </Button>
+                </Link>
+              </div>
             </CardContent>
           </Card>
         </div>

@@ -47,9 +47,11 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600">
-              Sign Up
-            </Button>
+            <Link to="/pricing">
+              <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600">
+                Sign Up
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -77,9 +79,11 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 w-full">
-                Sign Up
-              </Button>
+              <Link to="/pricing" onClick={() => setIsMenuOpen(false)}>
+                <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 w-full">
+                  Sign Up
+                </Button>
+              </Link>
             </nav>
           </div>
         )}
