@@ -1,11 +1,30 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Layout from '@/components/Layout';
 
 const Index = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const heroImages = [
+    "/lovable-uploads/5ad26a09-cb16-42da-a15e-93b3b16dc3a8.png",
+    "/lovable-uploads/18221ed4-ed79-4c15-9e55-d255955920de.png",
+    "/lovable-uploads/212cf2e2-506b-4c20-8680-e42c327b0e10.png",
+    "/lovable-uploads/54a73b7e-2271-4272-81ed-367899b056a8.png",
+    "/lovable-uploads/dcc56fa8-78d1-4a37-8ef0-2e100a072c77.png",
+    "/lovable-uploads/ae446542-faf8-41f0-9a46-0c8a318f9d89.png"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
   const features = [
     {
       title: "AI-Generated Workouts",
@@ -52,6 +71,26 @@ const Index = () => {
       {/* Hero Section */}
       <section className="hero-gradient py-20 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
+        
+        {/* Animated Image Background */}
+        <div className="absolute inset-0 z-0">
+          {heroImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentImageIndex ? 'opacity-30' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={image}
+                alt={`Fitness motivation ${index + 1}`}
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-blue-900/80"></div>
+            </div>
+          ))}
+        </div>
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <Badge variant="secondary" className="mb-6 glass-effect">
@@ -74,6 +113,24 @@ const Index = () => {
             </div>
           </div>
         </div>
+        
+        {/* Image Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex space-x-2">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex 
+                    ? 'bg-white scale-125' 
+                    : 'bg-white/50 hover:bg-white/75'
+                }`}
+                onClick={() => setCurrentImageIndex(index)}
+              />
+            ))}
+          </div>
+        </div>
+        
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
       </section>
 
