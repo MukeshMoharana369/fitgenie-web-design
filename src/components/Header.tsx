@@ -18,12 +18,21 @@ const Header = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavClick = () => {
+    scrollToTop();
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-effect">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2" onClick={scrollToTop}>
             <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">F</span>
             </div>
@@ -39,6 +48,7 @@ const Header = () => {
                 className={`text-sm font-medium transition-colors hover:text-primary ${
                   isActive(item.path) ? 'text-primary' : 'text-muted-foreground'
                 }`}
+                onClick={scrollToTop}
               >
                 {item.name}
               </Link>
@@ -48,7 +58,10 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link to="/pricing">
-              <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600">
+              <Button 
+                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
+                onClick={scrollToTop}
+              >
                 Sign Up
               </Button>
             </Link>
@@ -74,12 +87,12 @@ const Header = () => {
                   className={`text-sm font-medium transition-colors hover:text-primary ${
                     isActive(item.path) ? 'text-primary' : 'text-muted-foreground'
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={handleNavClick}
                 >
                   {item.name}
                 </Link>
               ))}
-              <Link to="/pricing" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/pricing" onClick={handleNavClick}>
                 <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 w-full">
                   Sign Up
                 </Button>
